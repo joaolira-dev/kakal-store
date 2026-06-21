@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  slug      String    @unique
+  color     String    @default("#ffe8ef")
+  icon      String    @default("Sparkles")
+  active    Boolean   @default(true)
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+model Product {
+  id            Int       @id @default(autoincrement())
+  name          String
+  slug          String    @unique
+  description   String    @default("")
+  price         Float
+  salePrice     Float?
+  stock         Int       @default(0)
+  minStock      Int       @default(3)
+  sizes         String    @default("P,M,G")
+  colors        String    @default("Colorido")
+  gender        String    @default("Unissex")
+  image         String    @default("")
+  active        Boolean   @default(true)
+  featured      Boolean   @default(false)
+  new           Boolean   @default(false)
+  promotion     Boolean   @default(false)
+  categoryId    Int?
+  category      Category? @relation(fields: [categoryId], references: [id])
+  orderItems    OrderItem[]
+  saleItems     SaleItem[]
+  movements     StockMovement[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String?  @unique
+  phone     String
+  cpf       String?
+  address   String   @default("")
+  orders    Order[]
+  sales     Sale[]
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  code      String      @unique
+  status    String      @default("PENDENTE")
+  subtotal  Float
+  discount  Float       @default(0)
+  shipping  Float       @default(0)
+  total     Float
+  payment   String      @default("PIX")
+  address   String      @default("")
+  customerId Int
+  customer  Customer    @relation(fields: [customerId], references: [id])
+  items     OrderItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Float
+  size      String  @default("")
+  color     String  @default("")
+  productId Int
+  orderId   Int
+  product   Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
+}
+
+model Sale {
+  id         Int        @id @default(autoincrement())
+  code       String     @unique
+  total      Float
+  discount   Float      @default(0)
+  payment    String
+  customerId Int?
+  customer   Customer?  @relation(fields: [customerId], references: [id])
+  items      SaleItem[]
+  createdAt  DateTime   @default(now())
+}
+
+model SaleItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Float
+  productId Int
+  saleId    Int
+  product   Product @relation(fields: [productId], references: [id])
+  sale      Sale    @relation(fields: [saleId], references: [id])
+}
+
+model StockMovement {
+  id        Int      @id @default(autoincrement())
+  type      String
+  quantity  Int
+  note      String   @default("")
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Promotion {
+  id        Int      @id @default(autoincrement())
+  name      String
+  discount  Float
+  startDate DateTime
+  endDate   DateTime
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Coupon {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique
+  discount  Float
+  active    Boolean  @default(true)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model StoreSettings {
+  id              Int      @id @default(1)
+  name            String   @default("Kakal Kids Store")
+  whatsapp        String   @default("5583999999999")
+  instagram       String   @default("@kakalkidsstore")
+  email           String   @default("atendimento@kakalkids.com.br")
+  address         String   @default("João Pessoa - PB")
+  primaryColor    String   @default("#ff3f6c")
+  whatsappMessage String   @default("Olá! Como podemos ajudar?")
+  shipping        Float    @default(15)
+  exchangePolicy  String   @default("Trocas em até 7 dias.")
+  homeText        String   @default("Estilo, conforto e diversão para todas as aventuras!")
+  updatedAt       DateTime @updatedAt
+}
+
