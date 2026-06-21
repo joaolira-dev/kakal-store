@@ -1,3 +1,9 @@
+import { CartProvider } from './hooks/useCart';
+import AppRoutes from './routes/AppRoutes';
 export default function App() {
-  return <main>Kakal Kids Store</main>;
+  return (
+    <CartProvider>
+      <AppRoutes />
+    </CartProvider>
+  );
 }
