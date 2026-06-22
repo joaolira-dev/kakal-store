@@ -35,26 +35,37 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto max-w-[1440px] bg-kakal-cream px-4 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
-        <StoreHeader />
-        <Hero />
-        <CategoryBar />
-        <div className="grid gap-4 lg:grid-cols-[1.55fr_.95fr]">
-          <section className="rounded-2xl border border-slate-200 bg-white p-4">
-            <SectionTitle>Destaques da semana</SectionTitle>
-            <ProductGrid products={featured.length ? featured : products.slice(0, 5)} compact />
-          </section>
-          <PromoCard />
-          <section className="rounded-2xl border border-violet-100 bg-kakal-lilac/45 p-4">
-            <SectionTitle icon={<Sparkles className="h-5 w-5 text-violet-500" />}>
-              Novidades
-            </SectionTitle>
-            <ProductGrid products={fresh.length ? fresh : products.slice(5, 10)} compact />
-          </section>
-          <WhatsAppCard />
+      <main className="relative isolate mx-auto max-w-[1440px] overflow-hidden bg-kakal-cream px-4 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-20 -top-28 z-0 h-56 w-[350px] rounded-br-[90%] bg-kakal-yellow sm:-left-24 sm:-top-36 sm:h-72 sm:w-[460px]"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-36 z-0 h-52 w-[350px] rounded-bl-[92%] bg-sky-400 sm:-right-32 sm:-top-44 sm:h-72 sm:w-[450px]"
+        />
+
+        <div className="relative z-10">
+          <StoreHeader />
+          <Hero />
+          <CategoryBar />
+          <div className="grid gap-4 lg:grid-cols-[1.55fr_.95fr]">
+            <section className="rounded-2xl border border-slate-200 bg-white p-4">
+              <SectionTitle>Destaques da semana</SectionTitle>
+              <ProductGrid products={featured.length ? featured : products.slice(0, 5)} compact />
+            </section>
+            <PromoCard />
+            <section className="rounded-2xl border border-violet-100 bg-kakal-lilac/45 p-4">
+              <SectionTitle icon={<Sparkles className="h-5 w-5 text-violet-500" />}>
+                Novidades
+              </SectionTitle>
+              <ProductGrid products={fresh.length ? fresh : products.slice(5, 10)} compact />
+            </section>
+            <WhatsAppCard />
+          </div>
+          <BenefitsBar />
+          <InstagramSection />
         </div>
-        <BenefitsBar />
-        <InstagramSection />
       </main>
       <StoreFooter />
     </>
