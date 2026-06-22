@@ -1,21 +1,22 @@
 import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { asset } from '../../data';
 import { useCart } from '../../hooks/useCart';
 
 const links = [
-  ['Início', '/'],
-  ['Catálogo', '/catalogo'],
-  ['Meninas', '/categoria/meninas'],
-  ['Meninos', '/categoria/meninos'],
-  ['Promoções', '/catalogo?promotion=1'],
-  ['Novidades', '/catalogo?new=1'],
+  { label: 'Início', to: '/', end: true },
+  { label: 'Catálogo', to: '/catalogo', search: '' },
+  { label: 'Meninas', to: '/categoria/meninas' },
+  { label: 'Meninos', to: '/categoria/meninos' },
+  { label: 'Promoções', to: '/catalogo?promotion=1', search: '?promotion=1' },
+  { label: 'Novidades', to: '/catalogo?new=1', search: '?new=1' },
 ];
 
 export default function StoreHeader() {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="relative z-30 flex h-[74px] items-center gap-3 rounded-[19px] bg-white px-4 shadow-soft lg:gap-7 lg:px-5">
@@ -42,17 +43,20 @@ export default function StoreHeader() {
             : 'hidden'
         } flex-1 lg:static lg:flex lg:flex-row lg:items-center lg:justify-center lg:gap-1 lg:bg-transparent lg:p-0 lg:shadow-none`}
       >
-        {links.map(([label, to]) => (
+        {links.map(({ label, to, search, end }) => (
           <NavLink
-            className={({ isActive }) =>
-              `rounded-full px-3 py-2 text-center text-xs font-black transition hover:text-kakal-pink ${
-                isActive
+            className={({ isActive }) => {
+              const active = isActive && (search === undefined || location.search === search);
+
+              return `rounded-full px-3 py-2 text-center text-xs font-black transition hover:text-kakal-pink ${
+                active
                   ? 'bg-kakal-pink text-white shadow-md shadow-pink-200 hover:text-white'
                   : 'text-slate-700'
-              }`
-            }
+              }`;
+            }}
             key={label}
             to={to}
+            end={end}
             onClick={() => setOpen(false)}
           >
             {label}
