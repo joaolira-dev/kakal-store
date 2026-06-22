@@ -66,7 +66,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative h-[344px] overflow-hidden rounded-[20px]">
+      <div className="relative h-[344px] overflow-hidden rounded-[20px] xl:h-full">
         <img
           className="h-full w-full object-cover object-[center_7%]"
           src={asset('hero-kids.png')}
