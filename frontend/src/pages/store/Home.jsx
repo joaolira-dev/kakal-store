@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       <StorePageFrame>
-        <main className="mx-auto max-w-[1440px] bg-kakal-cream px-4 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
+        <main className="mx-auto max-w-[1440px] bg-transparent px-4 pt-4 font-nunito text-kakal-ink sm:bg-kakal-cream sm:px-7 lg:px-12">
           <StoreHeader />
           <Hero />
           <CategoryBar />

@@ -157,7 +157,7 @@ export default function Catalog({ fixedCategory }) {
   return (
     <>
       <StorePageFrame>
-        <main className="mx-auto min-h-[75vh] max-w-[1440px] bg-kakal-cream px-4 pb-10 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
+        <main className="mx-auto min-h-[75vh] max-w-[1440px] bg-transparent px-4 pb-10 pt-4 font-nunito text-kakal-ink sm:bg-kakal-cream sm:px-7 lg:px-12">
           <StoreHeader />
 
         <div className="mb-6 mt-6 text-sm text-slate-500">
