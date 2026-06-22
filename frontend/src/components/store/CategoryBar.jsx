@@ -29,7 +29,7 @@ export default function CategoryBar() {
               to={`/categoria/${slug}`}
             >
               <span
-                className="mx-auto mb-1.5 grid h-14 w-14 place-items-center rounded-full transition group-hover:-translate-y-1 group-hover:shadow-md"
+                className="mx-auto mb-1.5 grid h-[60px] w-[60px] place-items-center rounded-full transition group-hover:-translate-y-1 group-hover:shadow-md"
                 style={{ background: color }}
               >
                 <img
