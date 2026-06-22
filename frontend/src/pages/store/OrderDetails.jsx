@@ -2,6 +2,7 @@ import { CheckCircle2, MessageCircle, Package, Truck } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import StoreHeader from '../../components/store/StoreHeader';
 import StoreFooter from '../../components/store/StoreFooter';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import { asset } from '../../data';
 export default function OrderDetails() {
   const { code } = useParams();
@@ -20,8 +21,9 @@ export default function OrderDetails() {
         };
   return (
     <>
-      <main className="store-shell page-store">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="store-shell page-store">
+          <StoreHeader />
         <div className="breadcrumb">
           Início / Meus pedidos / <b>#{code}</b>
         </div>
@@ -101,7 +103,8 @@ export default function OrderDetails() {
             </div>
           </section>
         </section>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

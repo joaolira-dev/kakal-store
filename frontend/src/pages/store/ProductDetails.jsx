@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import StoreHeader from '../../components/store/StoreHeader';
 import StoreFooter from '../../components/store/StoreFooter';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import { asset, fallbackProducts } from '../../data';
 import { useCart } from '../../hooks/useCart';
 import api from '../../services/api';
@@ -29,8 +30,9 @@ export default function ProductDetails() {
   );
   return (
     <>
-      <main className="store-shell page-store">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="store-shell page-store">
+          <StoreHeader />
         <div className="breadcrumb">
           Início / Catálogo / <b>{product.name}</b>
         </div>
@@ -153,7 +155,8 @@ export default function ProductDetails() {
                 : '“A qualidade é maravilhosa e chegou bem rapidinho!” — Mamãe da Alice'}
           </p>
         </section>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

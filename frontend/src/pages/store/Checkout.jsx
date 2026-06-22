@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import StoreHeader from '../../components/store/StoreHeader';
 import StoreFooter from '../../components/store/StoreFooter';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import CheckoutForm from '../../components/store/CheckoutForm';
 import { useCart } from '../../hooks/useCart';
 import api from '../../services/api';
@@ -56,32 +57,35 @@ export default function Checkout() {
   }
   if (done) {
     const order = JSON.parse(localStorage.getItem('kakal_last_order'));
-    return (
-      <>
-        <main className="store-shell page-store">
-          <StoreHeader />
-          <section className="checkout-success">
-            <CheckCircle2 />
-            <span className="eyebrow">Pedido enviado com carinho!</span>
-            <h1>Oba! Seu pedido foi recebido.</h1>
-            <p>
-              O pedido <b>#{order.code}</b> já está com a nossa equipe. Vamos preparar tudo
-              direitinho.
-            </p>
-            <strong>R$ {(order.total || subtotal).toFixed(2).replace('.', ',')}</strong>
-            <Link className="btn btn-primary" to={`/pedido/${order.code}`}>
-              Acompanhar pedido
-            </Link>
-          </section>
-        </main>
+      return (
+        <>
+          <StorePageFrame>
+            <main className="store-shell page-store">
+              <StoreHeader />
+              <section className="checkout-success">
+                <CheckCircle2 />
+                <span className="eyebrow">Pedido enviado com carinho!</span>
+                <h1>Oba! Seu pedido foi recebido.</h1>
+                <p>
+                  O pedido <b>#{order.code}</b> já está com a nossa equipe. Vamos preparar tudo
+                  direitinho.
+                </p>
+                <strong>R$ {(order.total || subtotal).toFixed(2).replace('.', ',')}</strong>
+                <Link className="btn btn-primary" to={`/pedido/${order.code}`}>
+                  Acompanhar pedido
+                </Link>
+              </section>
+            </main>
+          </StorePageFrame>
         <StoreFooter />
       </>
     );
   }
   return (
     <>
-      <main className="store-shell page-store">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="store-shell page-store">
+          <StoreHeader />
         <div className="breadcrumb">
           Início / Carrinho / <b>Checkout</b>
         </div>
@@ -119,7 +123,8 @@ export default function Checkout() {
             </small>
           </aside>
         </div>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

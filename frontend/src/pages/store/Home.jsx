@@ -8,6 +8,7 @@ import ProductGrid from '../../components/store/ProductGrid';
 import PromoCard from '../../components/store/PromoCard';
 import StoreFooter from '../../components/store/StoreFooter';
 import StoreHeader from '../../components/store/StoreHeader';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import WhatsAppCard from '../../components/store/WhatsAppCard';
 import useProducts from '../../hooks/useProducts';
 
@@ -35,17 +36,8 @@ export default function Home() {
 
   return (
     <>
-      <main className="relative isolate mx-auto max-w-[1440px] overflow-hidden bg-kakal-cream px-4 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-20 -top-28 z-0 h-56 w-[350px] rounded-br-[90%] bg-kakal-yellow sm:-left-24 sm:-top-36 sm:h-72 sm:w-[460px]"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-36 z-0 h-52 w-[350px] rounded-bl-[92%] bg-sky-400 sm:-right-32 sm:-top-44 sm:h-72 sm:w-[450px]"
-        />
-
-        <div className="relative z-10">
+      <StorePageFrame>
+        <main className="mx-auto max-w-[1440px] bg-kakal-cream px-4 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
           <StoreHeader />
           <Hero />
           <CategoryBar />
@@ -65,8 +57,8 @@ export default function Home() {
           </div>
           <BenefitsBar />
           <InstagramSection />
-        </div>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import StoreFooter from '../../components/store/StoreFooter';
 import StoreHeader from '../../components/store/StoreHeader';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import ProductGrid from '../../components/store/ProductGrid';
 import useProducts from '../../hooks/useProducts';
 
@@ -155,8 +156,9 @@ export default function Catalog({ fixedCategory }) {
 
   return (
     <>
-      <main className="mx-auto min-h-[75vh] max-w-[1440px] bg-kakal-cream px-4 pb-10 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="mx-auto min-h-[75vh] max-w-[1440px] bg-kakal-cream px-4 pb-10 pt-4 font-nunito text-kakal-ink sm:px-7 lg:px-12">
+          <StoreHeader />
 
         <div className="mb-6 mt-6 text-sm text-slate-500">
           Início / <b className="text-kakal-ink">{fixedCategory || 'Catálogo'}</b>
@@ -391,7 +393,8 @@ export default function Catalog({ fixedCategory }) {
             )}
           </section>
         </div>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

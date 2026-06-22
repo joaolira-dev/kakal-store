@@ -1,6 +1,7 @@
 import { PackageCheck } from 'lucide-react';
 import StoreHeader from '../../components/store/StoreHeader';
 import StoreFooter from '../../components/store/StoreFooter';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import OrderCard from '../../components/store/OrderCard';
 export default function MyOrders() {
   const last = JSON.parse(localStorage.getItem('kakal_last_order') || 'null');
@@ -9,8 +10,9 @@ export default function MyOrders() {
     : [{ code: 'KKS1048', total: 189.9, status: 'PAGO', createdAt: '2026-06-18', items: [{}] }];
   return (
     <>
-      <main className="store-shell page-store">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="store-shell page-store">
+          <StoreHeader />
         <div className="breadcrumb">
           Início / <b>Meus pedidos</b>
         </div>
@@ -26,7 +28,8 @@ export default function MyOrders() {
             ))}
           </div>
         </section>
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );

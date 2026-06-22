@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import StoreHeader from '../../components/store/StoreHeader';
 import StoreFooter from '../../components/store/StoreFooter';
+import StorePageFrame from '../../components/store/StorePageFrame';
 import CartItem from '../../components/store/CartItem';
 import { useCart } from '../../hooks/useCart';
 export default function Cart() {
@@ -20,8 +21,9 @@ export default function Cart() {
   );
   return (
     <>
-      <main className="store-shell page-store">
-        <StoreHeader />
+      <StorePageFrame>
+        <main className="store-shell page-store">
+          <StoreHeader />
         <div className="breadcrumb">
           Início / <b>Carrinho</b>
         </div>
@@ -97,7 +99,8 @@ export default function Cart() {
             </aside>
           </div>
         )}
-      </main>
+        </main>
+      </StorePageFrame>
       <StoreFooter />
     </>
   );
