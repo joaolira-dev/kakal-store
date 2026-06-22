@@ -1,5 +1,5 @@
 import { Facebook, Instagram, MapPin, MessageCircle, Music2, Send } from 'lucide-react';
-import { asset } from '../../data';
+import kakalLogo from '../../../assets/kakal-logo.png';
 
 const footerGroups = [
   ['Institucional', ['Sobre nós', 'Trocas e Devoluções', 'Política de Privacidade', 'Contato']],
@@ -12,8 +12,8 @@ export default function StoreFooter() {
     <footer className="mx-auto grid max-w-[1440px] grid-cols-2 gap-8 border-t-2 border-yellow-200 bg-[#fffdf8] px-6 py-12 font-nunito text-sm sm:grid-cols-3 lg:grid-cols-[1.7fr_repeat(4,1fr)] lg:px-16">
       <div className="col-span-2 flex gap-3 sm:col-span-1 lg:col-span-1">
         <img
-          className="h-12 w-12 rounded-full bg-kakal-yellow object-cover object-[46%_29%]"
-          src={asset('logo-kakal.png')}
+          className="h-12 w-12 rounded-full bg-kakal-yellow object-contain p-1.5"
+          src={kakalLogo}
           alt="Kakal Kids Store"
         />
         <div>

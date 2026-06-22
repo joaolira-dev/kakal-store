@@ -1,8 +1,8 @@
 import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { asset } from '../../data';
 import { useCart } from '../../hooks/useCart';
+import kakalLogo from '../../../assets/kakal-logo.png';
 
 const links = [
   { label: 'Início', to: '/', end: true },
@@ -19,12 +19,12 @@ export default function StoreHeader() {
   const location = useLocation();
 
   return (
-    <header className="relative z-30 flex h-[74px] items-center gap-3 rounded-[19px] bg-white px-4 shadow-soft lg:gap-7 lg:px-5">
+    <header className="kakal-header-enter relative z-30 flex h-[74px] items-center gap-3 rounded-[19px] bg-white px-4 shadow-soft lg:gap-7 lg:px-5">
       <Link className="flex min-w-0 items-center gap-2.5 lg:min-w-[190px]" to="/">
         <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-yellow-300 bg-kakal-yellow">
           <img
-            className="h-full w-full scale-125 object-cover object-[46%_29%]"
-            src={asset('logo-kakal.png')}
+            className="h-full w-full object-contain p-1.5"
+            src={kakalLogo}
             alt="Kakal Kids Store"
           />
         </span>

@@ -11,7 +11,7 @@ function CollectionCard({ boy = false }) {
   const button = boy ? 'bg-sky-500 hover:bg-sky-600' : 'bg-kakal-pink hover:bg-pink-600';
 
   return (
-    <article className="relative min-h-36 overflow-hidden rounded-2xl p-6 isolate">
+    <article className="kakal-card-enter relative min-h-36 overflow-hidden rounded-2xl p-6 isolate">
       <img
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         src={asset(boy ? 'menino-card.png' : 'menina-card.png')}
@@ -38,7 +38,7 @@ export default function Hero() {
         <span className="inline-flex rounded-full bg-kakal-yellow px-3 py-1 text-xs font-black">
           Moda infantil que encanta
         </span>
-        <Sparkles className="absolute right-4 top-20 h-8 w-8 text-sky-500" />
+        <Sparkles className="kakal-float absolute right-4 top-20 h-8 w-8 text-sky-500" />
         <h1 className="mt-4 text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl">
           Estilo, conforto
           <br />e diversão para
@@ -48,7 +48,7 @@ export default function Hero() {
         <p className="mt-5 max-w-sm text-sm font-semibold leading-6 text-slate-600">
           Peças lindas e cheias de personalidade para acompanhar cada fase do seu pequeno.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="kakal-reveal kakal-reveal-delay mt-6 flex flex-wrap gap-3">
           <Link
             className="inline-flex items-center gap-2 rounded-full bg-kakal-pink px-5 py-3 text-sm font-black text-white shadow-lg shadow-pink-200 transition hover:-translate-y-0.5"
             to="/catalogo"
