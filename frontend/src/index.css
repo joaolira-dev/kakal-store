@@ -74,15 +74,6 @@ body {
     transform: translateY(-8px) rotate(4deg);
   }
 }
-@keyframes kakal-float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
 @keyframes kakal-reveal {
   from {
     opacity: 0;
@@ -110,10 +101,6 @@ body {
 .kakal-float {
   animation: kakal-float 3.8s ease-in-out infinite;
 }
-.kakal-float-soft {
-  animation: kakal-float-soft 5.5s ease-in-out infinite;
-  will-change: transform;
-}
 .kakal-card-enter {
   animation: kakal-reveal 620ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -132,7 +119,6 @@ body {
   .kakal-corner-left,
   .kakal-corner-right,
   .kakal-float,
-  .kakal-float-soft,
   .kakal-card-enter,
   .kakal-reveal {
     animation: none !important;
